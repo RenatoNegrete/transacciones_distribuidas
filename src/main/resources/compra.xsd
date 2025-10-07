@@ -1,0 +1,38 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/compra"
+           xmlns:tns="http://example.com/compra"
+           elementFormDefault="qualified">
+
+    <xs:element name="realizarCompraRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cliente" type="xs:string"/>
+                <xs:element name="metodo" type="xs:string"/>
+                <xs:element name="productos" type="tns:ProductosList"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="ProductosList">
+        <xs:sequence>
+            <xs:element name="producto" type="tns:Producto" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Producto">
+        <xs:sequence>
+            <xs:element name="productId" type="xs:long"/>
+            <xs:element name="cantidad" type="xs:int"/>
+            <xs:element name="precioUnitario" type="xs:double"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="realizarCompraResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="mensaje" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

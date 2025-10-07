@@ -22,6 +22,12 @@ public class CompraRequest {
         private int cantidad;
         private double precioUnitario;
 
+        public ProductoCompra(Long productId, int cantidad, double precioUnitario) {
+            this.productId = productId;
+            this.cantidad = cantidad;
+            this.precioUnitario = precioUnitario;
+        }
+
         public Long getProductId() {
             return productId;
         }
