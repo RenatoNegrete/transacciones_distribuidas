@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.demo.grpc";
+option java_outer_classname = "CompraProto";
+
+service CompraService {
+  rpc RealizarCompra (RealizarCompraRequest) returns (RealizarCompraResponse);
+}
+
+message Producto {
+  int64 productId = 1;
+  int32 cantidad = 2;
+  double precioUnitario = 3;
+}
+
+message RealizarCompraRequest {
+  string cliente = 1;
+  string metodo = 2;
+  repeated Producto productos = 3;
+}
+
+message RealizarCompraResponse {
+  string mensaje = 1;
+}

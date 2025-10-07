@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="3.0" xmlns="https://jakarta.ee/xml/ns/jaxb">
+  <!--
+
+Este archivo ha sido generado por Eclipse Implementation of JAXB v3.0.2 
+Visite https://eclipse-ee4j.github.io/jaxb-ri 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2025.10.06 a las 10:19:41 PM COT 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="http://example.com/compra">
+    <schemaBindings map="false">
+      <package name="com.example.compra"/>
+    </schemaBindings>
+    <bindings scd="tns:realizarCompraRequest">
+      <class ref="com.example.compra.RealizarCompraRequest"/>
+    </bindings>
+    <bindings scd="~tns:ProductosList">
+      <class ref="com.example.compra.ProductosList"/>
+    </bindings>
+    <bindings scd="tns:realizarCompraResponse">
+      <class ref="com.example.compra.RealizarCompraResponse"/>
+    </bindings>
+    <bindings scd="~tns:Producto">
+      <class ref="com.example.compra.Producto"/>
+    </bindings>
+  </bindings>
+</bindings>
+
