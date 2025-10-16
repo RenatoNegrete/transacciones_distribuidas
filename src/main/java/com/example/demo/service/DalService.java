@@ -15,11 +15,13 @@ public class DalService {
     private final InventarioService invService;
     private final FacturacionService factService;
     private final PagosService pagService;
+    private final KafkaProducerService kafkaService;
 
-    public DalService(InventarioService invService, FacturacionService factService, PagosService pagService) {
+    public DalService(InventarioService invService, FacturacionService factService, PagosService pagService,  KafkaProducerService kafkaService) {
         this.invService = invService;
         this.factService = factService;
         this.pagService = pagService;
+        this.kafkaService = kafkaService;
     }
 
     public void procesarCompra(CompraRequest request) {
@@ -39,6 +41,8 @@ public class DalService {
             Payment pago = pagService.registrarPago(request.getMetodo(), total);
             pagoId = pago.getId();
             System.out.println("Compra procesada correctamente");
+            kafkaService.enviarFactura(factura);
+            kafkaService.enviarNotificacion("Compra procesada correctamente");
         } catch (Exception e) {
             System.err.println("Error en el proceso: " + e.getMessage());
             if (pagoId != null) pagService.eliminarPago(pagoId);
